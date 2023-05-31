@@ -86,10 +86,10 @@ public class GameManager : MonoBehaviour
     {
         clicks++;
         clickAmountText.text = clicks + " CLICKS";
-        bpoints = bpoints + (float)Math.Pow(1.3, inventory[2]);
+        bpoints = bpoints + (float)Math.Pow(1.15, inventory[2]);
 
         TextisVisible = !TextisVisible;
-        scoreText.text = TextisVisible ? "+" + Abr((int)Math.Pow(1.3, inventory[2])) : "";
+        scoreText.text = TextisVisible ? "+" + Abr((int)Math.Pow(1.15, inventory[2])) : "";
         if (TextisVisible)
         {
             cursorText.transform.position = Input.mousePosition;
@@ -143,6 +143,21 @@ public class GameManager : MonoBehaviour
     public string Abr(float num)
     {
         string s = "error";
+
+        if (num >= 1000000000000000)
+        {
+            s = Math.Round(num / 1000000000000000, 2) + "Q";
+        }
+
+        if (num >= 1000000000000)
+        {
+            s = Math.Round(num / 1000000000000, 2) + "T";
+        }
+
+        if (num >= 1000000000)
+        {
+            s = Math.Round(num / 1000000000, 2) + "B";
+        }
 
         if (num >= 1000000)
         {
