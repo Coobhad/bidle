@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
     {
         clicks++;
         clickAmountText.text = clicks + " CLICKS";
-        bpoints = bpoints + (float)Math.Pow(1.15, inventory[2]);
+        bpoints = bpoints + (float)Math.Pow(1.15, inventory[2] * 0.6);
 
         TextisVisible = !TextisVisible;
         scoreText.text = TextisVisible ? "+" + Abr((int)Math.Pow(1.15, inventory[2])) : "";
