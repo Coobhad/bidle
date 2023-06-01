@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Marouane Idle
+  m_Name: Mauro Idle
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,15 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1464201140, guid: 77adfcae2cbe7ac4b8074f2ca8fbcf03, type: 3}
-    - time: 0.15
-      value: {fileID: 576389194, guid: 77adfcae2cbe7ac4b8074f2ca8fbcf03, type: 3}
+      value: {fileID: -1838053721, guid: 5a37ecc7826a33d4b9b092160647c857, type: 3}
     - time: 0.3
-      value: {fileID: -1994159672, guid: 77adfcae2cbe7ac4b8074f2ca8fbcf03, type: 3}
-    - time: 0.43333334
-      value: {fileID: -508170015, guid: 77adfcae2cbe7ac4b8074f2ca8fbcf03, type: 3}
+      value: {fileID: 1595678468, guid: 5a37ecc7826a33d4b9b092160647c857, type: 3}
     - time: 0.5833333
-      value: {fileID: 1086906386, guid: 77adfcae2cbe7ac4b8074f2ca8fbcf03, type: 3}
+      value: {fileID: 1389749408, guid: 5a37ecc7826a33d4b9b092160647c857, type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
@@ -52,11 +48,9 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1464201140, guid: 77adfcae2cbe7ac4b8074f2ca8fbcf03, type: 3}
-    - {fileID: 576389194, guid: 77adfcae2cbe7ac4b8074f2ca8fbcf03, type: 3}
-    - {fileID: -1994159672, guid: 77adfcae2cbe7ac4b8074f2ca8fbcf03, type: 3}
-    - {fileID: -508170015, guid: 77adfcae2cbe7ac4b8074f2ca8fbcf03, type: 3}
-    - {fileID: 1086906386, guid: 77adfcae2cbe7ac4b8074f2ca8fbcf03, type: 3}
+    - {fileID: -1838053721, guid: 5a37ecc7826a33d4b9b092160647c857, type: 3}
+    - {fileID: 1595678468, guid: 5a37ecc7826a33d4b9b092160647c857, type: 3}
+    - {fileID: 1389749408, guid: 5a37ecc7826a33d4b9b092160647c857, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
