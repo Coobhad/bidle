@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
+using UnityEngine.Audio;
 
 
 public class GameManager : MonoBehaviour
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour
     public float bpoints;
     public float bps;
     public int ballAmount;
+    public int framesPassed;
     public float fadeDuration = 0.02f;
 
     private bool TextisVisible;
@@ -29,11 +32,15 @@ public class GameManager : MonoBehaviour
 
     public GameObject b;
     public GameObject cursorText;
+    public VideoPlayer screenBreak;
+    public AudioSource mauroYell;
 
     // Start is called before the first frame update
     void Awake()
     {
+        Application.runInBackground = true;
         Application.targetFrameRate = 60;
+
         belinda = b.GetComponent<Belinda>();
 
         // ADD LOAD FUNCTION BEFORE BUILD !!!!
@@ -44,9 +51,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TextisVisible)
+        if (TextisVisible == false)
         {
             cursorText.transform.position = Input.mousePosition;
+        }
+        else if (TextisVisible)
+        {
+            framesPassed = 0;
         }
 
         UpdatePoints();
@@ -80,6 +91,13 @@ public class GameManager : MonoBehaviour
             }
 
         }
+        if (framesPassed >= 360000)
+        {
+            mauroYell.Play();
+            screenBreak.Play();
+            framesPassed = 0;
+        }
+        framesPassed++;
     }
 
     public void Click()
@@ -192,5 +210,6 @@ public class GameManager : MonoBehaviour
 
         scoreText.text = "";
         scoreText.color = new Color(scoreText.color.r, scoreText.color.g, scoreText.color.b, 1f);
+        TextisVisible = false;
     }
 }
