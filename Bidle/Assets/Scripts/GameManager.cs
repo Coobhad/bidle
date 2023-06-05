@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject b;
     public GameObject cursorText;
+    public GameObject screenBreakO;
     public VideoPlayer screenBreak;
     public AudioSource mauroYell;
 
@@ -93,6 +94,7 @@ public class GameManager : MonoBehaviour
         }
         if (framesPassed >= 360000)
         {
+            screenBreakO.SetActive(true);
             mauroYell.Play();
             screenBreak.Play();
             framesPassed = 0;

@@ -355,7 +355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &226432235
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2284,7 +2284,7 @@ MonoBehaviour:
   bpoints: 0
   bps: 0
   ballAmount: 50000
-  framesPassed: 359900
+  framesPassed: 359990
   fadeDuration: 1
   inventory: 0000000000000000000000000000000000000000
   bpsText: {fileID: 218822766}
@@ -2293,6 +2293,7 @@ MonoBehaviour:
   scoreText: {fileID: 400197400}
   b: {fileID: 619213040}
   cursorText: {fileID: 400197399}
+  screenBreakO: {fileID: 2129952468}
   screenBreak: {fileID: 2129952472}
   mauroYell: {fileID: 2129952473}
 --- !u!4 &956509169
@@ -5725,7 +5726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2129952469
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5800,7 +5801,7 @@ VideoPlayer:
   m_RenderMode: 2
   m_AspectRatio: 2
   m_DataSource: 0
-  m_TimeUpdateMode: 2
+  m_TimeUpdateMode: 1
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0
   m_TargetAudioSources:
