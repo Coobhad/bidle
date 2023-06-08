@@ -40,8 +40,8 @@ public class Shop : MonoBehaviour
     public Text belindaCost;
     public Text belindaCounter;
 
-    public Text belindaCost;
-    public Text belindaCounter;
+    public Text ballCost;
+    public Text ballCounter;
 
     // Start is called before the first frame update
     void Start()
