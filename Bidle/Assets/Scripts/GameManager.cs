@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
         bpoints = bpoints + inventory[2] + 1;
 
         TextisVisible = !TextisVisible;
-        scoreText.text = TextisVisible ? "+" + inventory[2] + 1 : "";
+        scoreText.text = TextisVisible ? "+" + (inventory[2] + 1) : "";
         if (TextisVisible)
         {
             cursorText.transform.position = Input.mousePosition;
@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
 
     public void BelindaClick()
     {
-        belinda.reward = 1000;
+        belinda.reward = 10000 * (int)(Math.Pow(2, inventory[5]) + 1);
         bpoints = bpoints + belinda.reward;
         belinda.Deactivate();
     }
@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
     // number formatting
     public string Abr(float num)
     {
-        string s = "error";
+        string s = "abr error";
 
         if (num >= 1000000000000000)
         {

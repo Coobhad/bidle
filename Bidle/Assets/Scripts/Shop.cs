@@ -179,9 +179,31 @@ public class Shop : MonoBehaviour
 
     }
 
+    public void BuyBelinda()
+    {
+        belinda.Buy();
+        belindaCost.text = Abr(belinda.cost) + " BP";
+        belindaCounter.text = Abr(belinda.counter) + "";
+    }
+
     public string Abr(float num)
     {
-        string s = "error";
+        string s = "abr error";
+
+        if (num >= 1000000000000000)
+        {
+            s = Math.Round(num / 1000000000000000, 2) + "Q";
+        }
+
+        if (num >= 1000000000000)
+        {
+            s = Math.Round(num / 1000000000000, 2) + "T";
+        }
+
+        if (num >= 1000000000)
+        {
+            s = Math.Round(num / 1000000000, 2) + "B";
+        }
 
         if (num >= 1000000)
         {
