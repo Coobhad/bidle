@@ -51,15 +51,15 @@ public class Shop : MonoBehaviour
 
         niels.place = 2;
         niels.baseCost = 1100;
-        niels.multiplier = 1.15F;
+        niels.multiplier = 1.25F;
 
         ingmar.place = 3;
         ingmar.baseCost = 12000;
-        ingmar.multiplier = 1.20F;
+        ingmar.multiplier = 1.12F;
 
         marouane.place = 4;
         marouane.baseCost = 130000;
-        marouane.multiplier = 1.25F;
+        marouane.multiplier = 1.15F;
 
         mauro.cost = (float)(mauro.baseCost * Math.Pow(mauro.multiplier, gameManager.inventory[0]));
         lucas.cost = (float)(lucas.baseCost * Math.Pow(lucas.multiplier, gameManager.inventory[1]));
