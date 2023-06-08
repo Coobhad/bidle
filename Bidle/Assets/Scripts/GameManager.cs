@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
         bpoints = bpoints + inventory[2] + 1;
 
         TextisVisible = !TextisVisible;
-        scoreText.text = TextisVisible ? "+" + Abr((int)Math.Pow(1.15, inventory[2])) : "";
+        scoreText.text = TextisVisible ? "+" + inventory[2] + 1 : "";
         if (TextisVisible)
         {
             cursorText.transform.position = Input.mousePosition;
@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Niels", inventory[2]);
         PlayerPrefs.SetInt("Ingmar", inventory[3]);
         PlayerPrefs.SetInt("Marouane", inventory[4]);
+        PlayerPrefs.SetInt("Belinda", inventory[5]);
 
         PlayerPrefs.SetInt("Clicks", clicks);
     }
@@ -155,6 +156,7 @@ public class GameManager : MonoBehaviour
         inventory[2] = PlayerPrefs.GetInt("Niels");
         inventory[3] = PlayerPrefs.GetInt("Ingmar");
         inventory[4] = PlayerPrefs.GetInt("Marouane");
+        inventory[5] = PlayerPrefs.GetInt("Belinda");
 
         clicks = PlayerPrefs.GetInt("Clicks");
     }

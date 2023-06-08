@@ -15,6 +15,7 @@ public class Shop : MonoBehaviour
     public Item mauro = new Item();
     public Item lucas = new Item();
     public Item ingmar = new Item();
+    public Item belinda = new Item();
 
     public Text marouaneCost;
     public Text marouaneCounter;
@@ -35,6 +36,12 @@ public class Shop : MonoBehaviour
     public Text ingmarCost;
     public Text ingmarCounter;
     public GameObject ingmarSprite;
+
+    public Text belindaCost;
+    public Text belindaCounter;
+
+    public Text belindaCost;
+    public Text belindaCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -61,11 +68,16 @@ public class Shop : MonoBehaviour
         marouane.baseCost = 130000;
         marouane.multiplier = 1.15F;
 
+        belinda.place = 3;
+        belinda.baseCost = 12000;
+        belinda.multiplier = 1.12F;
+
         mauro.cost = (float)(mauro.baseCost * Math.Pow(mauro.multiplier, gameManager.inventory[0]));
         lucas.cost = (float)(lucas.baseCost * Math.Pow(lucas.multiplier, gameManager.inventory[1]));
         niels.cost = (float)(niels.baseCost * Math.Pow(niels.multiplier, gameManager.inventory[2]));
         ingmar.cost = (float)(ingmar.baseCost * Math.Pow(ingmar.multiplier, gameManager.inventory[3]));
         marouane.cost = (float)(marouane.baseCost * Math.Pow(marouane.multiplier, gameManager.inventory[4]));
+        belinda.cost = (float)(belinda.baseCost * Math.Pow(belinda.multiplier, gameManager.inventory[5]));
 
         mauroCost.text = Abr(mauro.cost) + " BP";
         mauroCounter.text = Abr(gameManager.inventory[0]) + "";
@@ -102,6 +114,9 @@ public class Shop : MonoBehaviour
         {
             marouaneSprite.SetActive(true);
         }
+
+        belindaCost.text = Abr(belinda.cost) + " BP";
+        belindaCounter.text = Abr(gameManager.inventory[5]) + "";
     }
 
     public void BuyMarouane()
