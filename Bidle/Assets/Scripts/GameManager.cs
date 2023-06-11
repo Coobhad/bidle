@@ -9,7 +9,7 @@ using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
-    Belinda belinda;
+    public Belinda belinda = new Belinda();
 
     System.Random rnd = new System.Random();
 
@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     public int mPrgs;
     public float bpoints;
     public float bps;
-    public int ballAmount;
     public int framesPassed;
     public float fadeDuration = 0.02f;
 
@@ -30,26 +29,27 @@ public class GameManager : MonoBehaviour
     public Text clickAmountText;
     public Text scoreText;
 
-    public GameObject b;
     public GameObject cursorText;
     public GameObject screenBreakO;
+    public GameObject belindaSprite;
+
     public VideoPlayer screenBreak;
     public AudioSource mauroYell;
 
-    // Start is called before the first frame update
     void Awake()
     {
         Application.runInBackground = true;
         Application.targetFrameRate = 60;
 
-        belinda = b.GetComponent<Belinda>();
+        belinda.dissapearChance = 6000;
+
 
         // ADD LOAD FUNCTION BEFORE BUILD !!!!
         scoreText.text = "";
         TextisVisible = false;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (TextisVisible == false)
@@ -66,14 +66,14 @@ public class GameManager : MonoBehaviour
         clickText.text = "Bpoints: " + Abr(bpoints);
         bpsText.text = Abr(bps) + " Bpoints per second";
 
-        //Activating Marouane
+        // Activating Marouane
         if (inventory[4] >= 1)
         {
             mPrgs++;
             if (mPrgs >= (int)(7200 / (inventory[4] ^ 1 / 5)))
             {
                 mPrgs = 0;
-                bpoints = bpoints + ballAmount;
+                bpoints = bpoints + 50000 * (float)(Math.Pow(1.2, inventory[6]));
             }
         }
 
@@ -82,16 +82,33 @@ public class GameManager : MonoBehaviour
         {
             if (belinda.isActive == false)
             {
-                int x = rnd.Next(0, (int)(7200 / (inventory[3] ^ (1 / 3))));
+                int x = rnd.Next(0, (int)(7200 * (Math.Pow(0.98, inventory[3]))));
 
                 if (x == 0)
                 {
-                    Debug.Log("activated belinda");
-                    belinda.Activate();
+                    Debug.Log(belinda.dissapearChance);
+                    int xCo = rnd.Next(300, 1200);
+                    int yCo = rnd.Next(300, 700);
+
+                    belindaSprite.transform.position = new Vector2(xCo, yCo);
+                    SetBelindaSpriteActive(true);
+                    belinda.isActive = true;
                 }
+            }
+            if (belinda.isActive == true)
+            {
+                int x = rnd.Next(0, belinda.dissapearChance);
+
+                if (x == 0)
+                {
+                    SetBelindaSpriteActive(false);
+                    belinda.isActive = false;
+                }
+
             }
 
         }
+        // Easter egg
         if (framesPassed >= 360000)
         {
             screenBreakO.SetActive(true);
@@ -109,19 +126,24 @@ public class GameManager : MonoBehaviour
         bpoints = bpoints + inventory[2] + 1;
 
         TextisVisible = !TextisVisible;
-        scoreText.text = TextisVisible ? "+" + (inventory[2] + 1) : "";
+        scoreText.text = TextisVisible ? "+" + Abr(inventory[2] + 1) : "";
         if (TextisVisible)
         {
             cursorText.transform.position = Input.mousePosition;
             StartCoroutine(FadeOutCoroutine());
         }
+
     }
 
     public void BelindaClick()
     {
-        belinda.reward = 10000 * (int)(Math.Pow(2, inventory[5]) + 1);
+        belinda.reward = 10000 * (float)(Math.Pow(1.3, inventory[5]));
         bpoints = bpoints + belinda.reward;
-        belinda.Deactivate();
+
+        SetBelindaSpriteActive(false);
+        belinda.isActive = false;
+
+        Debug.Log(belinda.reward);
     }
 
     public void UpdatePoints()
@@ -133,6 +155,10 @@ public class GameManager : MonoBehaviour
 
     }
 
+    void SetBelindaSpriteActive(bool isActive)
+    {
+        belindaSprite.SetActive(isActive);
+    }
     public void Save()
     {
         PlayerPrefs.SetFloat("Bpoints", bpoints);
@@ -143,6 +169,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Ingmar", inventory[3]);
         PlayerPrefs.SetInt("Marouane", inventory[4]);
         PlayerPrefs.SetInt("Belinda", inventory[5]);
+        PlayerPrefs.SetInt("Ball", inventory[5]);
 
         PlayerPrefs.SetInt("Clicks", clicks);
     }
@@ -157,6 +184,7 @@ public class GameManager : MonoBehaviour
         inventory[3] = PlayerPrefs.GetInt("Ingmar");
         inventory[4] = PlayerPrefs.GetInt("Marouane");
         inventory[5] = PlayerPrefs.GetInt("Belinda");
+        inventory[6] = PlayerPrefs.GetInt("Ball");
 
         clicks = PlayerPrefs.GetInt("Clicks");
     }
@@ -171,17 +199,17 @@ public class GameManager : MonoBehaviour
             s = Math.Round(num / 1000000000000000, 2) + "Q";
         }
 
-        if (num >= 1000000000000)
+        else if (num >= 1000000000000)
         {
             s = Math.Round(num / 1000000000000, 2) + "T";
         }
 
-        if (num >= 1000000000)
+        else if (num >= 1000000000)
         {
             s = Math.Round(num / 1000000000, 2) + "B";
         }
 
-        if (num >= 1000000)
+        else if (num >= 1000000)
         {
             s = Math.Round(num / 1000000, 2) + "M";
         }
