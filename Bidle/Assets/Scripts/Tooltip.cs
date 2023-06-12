@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-
-public class Tooltip : MonoBehaviour
+public class Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+
     public GameObject tt;
 
-    void OnMouseOver()
+    //Detect if the Cursor starts to pass over the GameObject
+    public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        Debug.Log("mouse is on");
+        tt.SetActive(true);
     }
 
-    void OnMouseExit()
+    //Detect when Cursor leaves the GameObject
+    public void OnPointerExit(PointerEventData pointerEventData)
     {
-        Debug.Log("mouse left");
+        tt.SetActive(false);
     }
 }

@@ -41,7 +41,11 @@ public class GameManager : MonoBehaviour
     private Animator ballin;
 
     public VideoPlayer screenBreak;
+
     public AudioSource mauroYell;
+    public AudioSource belindaBark;
+    public AudioSource belindaAppear;
+    public AudioSource ballSound;
 
     void Awake()
     {
@@ -49,6 +53,7 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
 
         // ADD LOAD FUNCTION BEFORE BUILD !!!!
+        Load();
 
         belinda.dissapearChance = (int)(4000 * (float)(Math.Pow(0.97, inventory[5])));
         scoreText.text = "";
@@ -78,7 +83,7 @@ public class GameManager : MonoBehaviour
 
         UpdatePoints();
 
-        clickText.text = "Bpoints: " + Abr(bpoints);
+        clickText.text = Abr(bpoints) + " Bpoints";
         bpsText.text = Abr(bps) + " Bpoints per second";
 
         // Activating Marouane
@@ -95,6 +100,7 @@ public class GameManager : MonoBehaviour
                 mPrgs = 0;
                 bpoints = bpoints + 50000 * (float)(Math.Pow(1.2, inventory[6]));
                 ballin.Play("Marouane Ballin", -1, 0f);
+                ballSound.Play();
                 isBallin = true;
             }
         }
@@ -114,6 +120,7 @@ public class GameManager : MonoBehaviour
 
                     belindaSprite.transform.position = new Vector2(xCo, yCo);
                     SetBelindaSpriteActive(true);
+                    belindaAppear.Play();
                     belinda.isActive = true;
                 }
             }
@@ -159,13 +166,13 @@ public class GameManager : MonoBehaviour
 
     public void BelindaClick()
     {
+        belindaBark.Play();
+
         belinda.reward = 10000 * (float)(Math.Pow(1.3, inventory[5]));
         bpoints = bpoints + belinda.reward;
 
         SetBelindaSpriteActive(false);
         belinda.isActive = false;
-
-        Debug.Log(belinda.reward);
     }
 
     public void UpdatePoints()
