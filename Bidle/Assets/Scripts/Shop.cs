@@ -239,7 +239,7 @@ public class Shop : MonoBehaviour
         belindaCost.text = Abr(belinda.cost) + " BP";
         belindaCounter.text = Abr(belinda.counter) + "";
 
-        gameManager.belinda.dissapearChance = (int)(4000 * (float)(Math.Pow(0.97, belinda.counter)));
+        gameManager.belinda.dissapearChance = (int)(4000 * (float)(Math.Pow(0.99, belinda.counter)));
     }
 
     public void BuyBall()

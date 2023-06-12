@@ -55,7 +55,8 @@ public class GameManager : MonoBehaviour
         // ADD LOAD FUNCTION BEFORE BUILD !!!!
         Load();
 
-        belinda.dissapearChance = (int)(4000 * (float)(Math.Pow(0.97, inventory[5])));
+
+        belinda.dissapearChance = (int)(4000 * (float)(Math.Pow(0.99, inventory[5])));
         scoreText.text = "";
         TextisVisible = false;
 
@@ -110,7 +111,7 @@ public class GameManager : MonoBehaviour
         {
             if (belinda.isActive == false)
             {
-                int x = rnd.Next(0, (int)(7200 * (Math.Pow(0.98, inventory[3]))));
+                int x = rnd.Next(0, (int)(7000 * (Math.Pow(0.98, inventory[3]))));
 
                 if (x == 0)
                 {
@@ -219,6 +220,21 @@ public class GameManager : MonoBehaviour
         clicks = PlayerPrefs.GetInt("Clicks");
     }
 
+
+    public void ClearSave()
+    {
+        PlayerPrefs.SetFloat("Bpoints", 0);
+
+        PlayerPrefs.SetInt("Mauro", 0);
+        PlayerPrefs.SetInt("Lucas", 0);
+        PlayerPrefs.SetInt("Niels", 0);
+        PlayerPrefs.SetInt("Ingmar", 0);
+        PlayerPrefs.SetInt("Marouane", 0);
+        PlayerPrefs.SetInt("Belinda", 0);
+        PlayerPrefs.SetInt("Ball", 0);
+
+        PlayerPrefs.SetInt("Clicks", 0);
+    }
     // number formatting
     public string Abr(float num)
     {
