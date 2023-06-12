@@ -7,6 +7,16 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
 
+    public GameObject x1;
+    public GameObject x10;
+    public GameObject x100;
+
+    public Text x1Txt;
+    public Text x10Txt;
+    public Text x100Txt;
+
+    private int xTimes = 1;
+
     GameManager gameManager;
     public GameObject g;
 
@@ -47,6 +57,11 @@ public class Shop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        x1Txt = x1.GetComponent<Text>();
+        x10Txt = x10.GetComponent<Text>();
+        x100Txt = x100.GetComponent<Text>();
+
         gameManager = g.GetComponent<GameManager>();
 
         mauro.place = 0;
@@ -129,7 +144,12 @@ public class Shop : MonoBehaviour
 
     public void BuyMarouane()
     {
-        marouane.Buy();
+        int i = 0;
+        while (i < xTimes)
+        {
+            marouane.Buy();
+            i++;
+        }
         marouaneCost.text = Abr(marouane.cost) + " BP";
         marouaneCounter.text = Abr(marouane.counter) + "";
         if (marouane.counter >= 1)
@@ -141,7 +161,12 @@ public class Shop : MonoBehaviour
 
     public void BuyNiels()
     {
-        niels.Buy();
+        int i = 0;
+        while (i < xTimes)
+        {
+            niels.Buy();
+            i++;
+        }
         nielsCost.text = Abr(niels.cost) + " BP";
         nielsCounter.text = Abr(niels.counter) + "";
         if (niels.counter >= 1)
@@ -153,7 +178,12 @@ public class Shop : MonoBehaviour
 
     public void BuyMauro()
     {
-        mauro.Buy();
+        int i = 0;
+        while (i < xTimes)
+        {
+            mauro.Buy();
+            i++;
+        }
         mauroCost.text = Abr(mauro.cost) + " BP";
         mauroCounter.text = Abr(mauro.counter) + "";
 
@@ -165,7 +195,12 @@ public class Shop : MonoBehaviour
 
     public void BuyLucas()
     {
-        lucas.Buy();
+        int i = 0;
+        while (i < xTimes)
+        {
+            lucas.Buy();
+            i++;
+        }
         lucasCost.text = Abr(lucas.cost) + " BP";
         lucasCounter.text = Abr(lucas.counter) + "";
         if (lucas.counter >= 1)
@@ -177,7 +212,12 @@ public class Shop : MonoBehaviour
 
     public void BuyIngmar()
     {
-        ingmar.Buy();
+        int i = 0;
+        while (i < xTimes)
+        {
+            ingmar.Buy();
+            i++;
+        }
         ingmarCost.text = Abr(ingmar.cost) + " BP";
         ingmarCounter.text = Abr(ingmar.counter) + "";
         if (ingmar.counter >= 1)
@@ -189,7 +229,13 @@ public class Shop : MonoBehaviour
 
     public void BuyBelinda()
     {
-        belinda.Buy();
+        int i = 0;
+        while (i < xTimes)
+        {
+            belinda.Buy();
+            i++;
+        }
+
         belindaCost.text = Abr(belinda.cost) + " BP";
         belindaCounter.text = Abr(belinda.counter) + "";
 
@@ -198,11 +244,44 @@ public class Shop : MonoBehaviour
 
     public void BuyBall()
     {
-        ball.Buy();
+        int i = 0;
+        while (i < xTimes)
+        {
+            ball.Buy();
+            i++;
+        }
         ballCost.text = Abr(ball.cost) + " BP";
         ballCounter.text = Abr(ball.counter) + "";
 
     }
+
+    public void BuyOnce()
+    {
+        xTimes = 1;
+
+        x1Txt.color = Color.white;
+        x10Txt.color = Color.grey;
+        x100Txt.color = Color.grey;
+    }
+
+    public void BuyTen()
+    {
+        xTimes = 10;
+
+        x1Txt.color = Color.grey;
+        x10Txt.color = Color.white;
+        x100Txt.color = Color.grey;
+    }
+
+    public void BuyHundred()
+    {
+        xTimes = 100;
+
+        x1Txt.color = Color.grey;
+        x10Txt.color = Color.grey;
+        x100Txt.color = Color.white;
+    }
+
 
     public string Abr(float num)
     {

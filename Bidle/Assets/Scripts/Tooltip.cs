@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Tooltip : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject tt;
+
+    void OnMouseOver()
     {
-        
+        Debug.Log("mouse is on");
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnMouseExit()
     {
-        
+        Debug.Log("mouse left");
     }
 }
