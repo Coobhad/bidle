@@ -71,10 +71,10 @@ public class Shop : MonoBehaviour
 
         belinda.place = 5;
         belinda.baseCost = 12000;
-        belinda.multiplier = 1.12F;
+        belinda.multiplier = 1.19F;
 
         ball.place = 6;
-        ball.baseCost = 130000;
+        ball.baseCost = 72000;
         ball.multiplier = 1.2F;
 
         mauro.cost = (float)(mauro.baseCost * Math.Pow(mauro.multiplier, gameManager.inventory[0]));
@@ -122,6 +122,9 @@ public class Shop : MonoBehaviour
 
         belindaCost.text = Abr(belinda.cost) + " BP";
         belindaCounter.text = Abr(gameManager.inventory[5]) + "";
+
+        ballCost.text = Abr(ball.cost) + " BP";
+        ballCounter.text = Abr(gameManager.inventory[6]) + "";
     }
 
     public void BuyMarouane()
@@ -191,6 +194,14 @@ public class Shop : MonoBehaviour
         belindaCounter.text = Abr(belinda.counter) + "";
 
         gameManager.belinda.dissapearChance = (int)(4000 * (float)(Math.Pow(0.97, belinda.counter)));
+    }
+
+    public void BuyBall()
+    {
+        ball.Buy();
+        ballCost.text = Abr(ball.cost) + " BP";
+        ballCounter.text = Abr(ball.counter) + "";
+
     }
 
     public string Abr(float num)

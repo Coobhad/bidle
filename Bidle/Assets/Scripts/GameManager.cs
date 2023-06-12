@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public float fadeDuration = 0.02f;
 
     private bool TextisVisible;
+    private bool isBallin = false;
+    private bool mIdleStatePicked = false;
 
     public int[] inventory = new int[2];
 
@@ -29,9 +31,14 @@ public class GameManager : MonoBehaviour
     public Text clickAmountText;
     public Text scoreText;
 
+    private string marouaneIdleState;
+
     public GameObject cursorText;
     public GameObject screenBreakO;
     public GameObject belindaSprite;
+
+    public GameObject marouaneSprite;
+    private Animator ballin;
 
     public VideoPlayer screenBreak;
     public AudioSource mauroYell;
@@ -41,17 +48,25 @@ public class GameManager : MonoBehaviour
         Application.runInBackground = true;
         Application.targetFrameRate = 60;
 
-        belinda.dissapearChance = 6000;
-
-
         // ADD LOAD FUNCTION BEFORE BUILD !!!!
+
+        belinda.dissapearChance = (int)(4000 * (float)(Math.Pow(0.97, inventory[5])));
         scoreText.text = "";
         TextisVisible = false;
+
+        ballin = marouaneSprite.GetComponent<Animator>();
     }
 
 
     void Update()
     {
+        // initialises marouane animator
+        if ((inventory[4] >= 1) && mIdleStatePicked == false && isBallin == false)
+        {
+            ballin = marouaneSprite.GetComponent<Animator>();
+            marouaneIdleState = ballin.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        }
+
         if (TextisVisible == false)
         {
             cursorText.transform.position = Input.mousePosition;
@@ -70,10 +85,17 @@ public class GameManager : MonoBehaviour
         if (inventory[4] >= 1)
         {
             mPrgs++;
-            if (mPrgs >= (int)(7200 / (inventory[4] ^ 1 / 5)))
+            if ((mPrgs == 30) && (isBallin == true))
+            {
+                ballin.Play(marouaneIdleState);
+                isBallin = false;
+            }
+            if (mPrgs >= (int)(10000 / (float)Math.Pow(1.1, inventory[4])) + 40)
             {
                 mPrgs = 0;
                 bpoints = bpoints + 50000 * (float)(Math.Pow(1.2, inventory[6]));
+                ballin.Play("Marouane Ballin", -1, 0f);
+                isBallin = true;
             }
         }
 
@@ -159,6 +181,7 @@ public class GameManager : MonoBehaviour
     {
         belindaSprite.SetActive(isActive);
     }
+
     public void Save()
     {
         PlayerPrefs.SetFloat("Bpoints", bpoints);
