@@ -74,7 +74,7 @@ public class Shop : MonoBehaviour
 
         niels.place = 2;
         niels.baseCost = 1100;
-        niels.multiplier = 1.25F;
+        niels.multiplier = 1.1F;
 
         ingmar.place = 3;
         ingmar.baseCost = 12000;

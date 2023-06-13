@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
         // ADD LOAD FUNCTION BEFORE BUILD !!!!
         Load();
 
-
         belinda.dissapearChance = (int)(4000 * (float)(Math.Pow(0.99, inventory[5])));
         scoreText.text = "";
         TextisVisible = false;
